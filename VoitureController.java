@@ -10,14 +10,17 @@ import com.example.locationvoiture.service.VoitureService;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class VoitureController {
     @Autowired
     private VoitureService voitureService;
 
-    @GetMapping("/")
-public List<Voiture> liste(){
-        return voitureService.listAll();
+   @GetMapping("/")
+    public String welcome(Model model) {
+        List<Voiture> listeVoiture = voitureService.listAll();
+        model.addAttribute("voiture", new Voiture());
+        model.addAttribute("listeVoiture", listeVoiture);
+        return "index";
     }
     @PostMapping("/ajouter")
     public void AjouterVoiture(@RequestBody Voiture voiture){
