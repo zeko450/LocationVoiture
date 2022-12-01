@@ -17,17 +17,19 @@ public class Voiture {
     private String couleur;
     private int kilometrage;
     private double prix;
+    private String statut;
 
     public Voiture() {
     }
 
-    public Voiture(String marque, String modele, int annee, String couleur, int kilometrage, double prix) {
+    public Voiture(String marque, String modele, int annee, String couleur, int kilometrage, double prix, String statut) {
         this.marque = marque;
         this.modele = modele;
         this.annee = annee;
         this.couleur = couleur;
         this.kilometrage = kilometrage;
         this.prix = prix;
+        this.statut = statut;
     }
 
     public Integer getId() {
@@ -85,6 +87,14 @@ public class Voiture {
     public void setPrix(double prix) {
         this.prix = prix;
     }
+    
+     public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +105,7 @@ public class Voiture {
                 ", annee=" + annee +
                 ", couleur='" + couleur + '\'' +
                 ", kilometrage=" + kilometrage +
-                ", prix=" + prix +
+                ", prix=" + prix +", statut='" + statut + '\'' +
                 '}';
     }
 }
