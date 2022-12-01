@@ -14,9 +14,13 @@ public class VoitureService {
     @Autowired
     private VoitureRepository voitureRepository;
 
-    public List<Voiture> listAll(){
-      return voitureRepository.findAll();
+    public List<Voiture> listAll(String keyword){
+ if (keyword != null) {
+            return voitureRepository.findAll(keyword);
+        } else {
+        return voitureRepository.findAll();
     }
+}
     public Voiture FindById(int id){
        return voitureRepository.findById(id).get();
     }
