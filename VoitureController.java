@@ -2,6 +2,7 @@ package com.example.locationvoiture.controller;
 
 import com.example.locationvoiture.entity.Voiture;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,8 @@ public class VoitureController {
     private VoitureService voitureService;
 
    @GetMapping("/")
-    public String welcome(Model model) {
-        List<Voiture> listeVoiture = voitureService.listAll();
+    public String welcome(Model model,@Param("keyword") String keyword) {
+        List<Voiture> listeVoiture = voitureService.listAll(keyword);
         model.addAttribute("voiture", new Voiture());
         model.addAttribute("listeVoiture", listeVoiture);
         return "index";
